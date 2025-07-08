@@ -16,22 +16,32 @@
             }
         }
     </script>
+    <script src="index.js" type="module"></script>
 
     <title>Restaurant Ordering App</title>
 </head>
-<body class="font-smythe flex items-center max-w-xl mx-auto">  
-        <div class="relative overflow-hidden h-40 w-full">
-            <img class="object-cover [object-position:center_75%] w-full h-full" src="./images/header.jpg">
-            <div class="absolute inset-0 flex items-center justify-start">
-                <div>
-                    <h1 class="text-white text-4xl px-6 pl-8 py-2 mb-0.5">
-                        Jimmy's Dinner
-                    </h1>
-                    <p class="text-white text-sm pl-8">The best burgers and pizzas in Town</p>
+<!-- The body still only had one div, but the height of the body changed because of the added content -->
+
+<!-- And since items-center means "align children vertically within body", it messed up vertical alignment (because the body had no full height) -->
+<body class="font-smythe">
+    <div class="max-w-xl mx-auto">
+        <div>
+            <div class="relative overflow-hidden h-40 w-full">
+                <img class="object-cover [object-position:center_75%] w-full h-full" src="./images/header.jpg">
+                <div class="absolute inset-0 flex items-center justify-start">
+                    <div>
+                        <h1 class="text-white text-4xl px-6 pl-8 py-2 mb-0.5">
+                            Jimmy's Dinner
+                        </h1>
+                        <p class="text-white text-sm pl-8">The best burgers and pizzas in Town</p>
+                    </div>
                 </div>
             </div>
+            
         </div>
+        <div id="menu"></div>  
+    </div>   
+        
     
-    <script src="index.js" type="module"></script>
 </body>
 </html>
