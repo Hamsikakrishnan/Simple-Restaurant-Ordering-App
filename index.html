@@ -3,10 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+            extend: {
+                fontFamily: {
+                smythe: ['"Smythe"', 'cursive']
+                }
+            }
+            }
+        }
+    </script>
+
+    <title>Restaurant Ordering App</title>
 </head>
-<body>
-    <h1>Helloooooooo Everyone</h1>
+<body class="font-smythe flex items-center max-w-xl mx-auto">  
+        <div class="relative overflow-hidden h-40 w-full">
+            <img class="object-cover [object-position:center_75%] w-full h-full" src="./images/header.jpg">
+            <div class="absolute inset-0 flex items-center justify-start">
+                <div>
+                    <h1 class="text-white text-4xl px-6 pl-8 py-2 mb-0.5">
+                        Jimmy's Dinner
+                    </h1>
+                    <p class="text-white text-sm pl-8">The best burgers and pizzas in Town</p>
+                </div>
+            </div>
+        </div>
+    
     <script src="index.js" type="module"></script>
 </body>
 </html>
