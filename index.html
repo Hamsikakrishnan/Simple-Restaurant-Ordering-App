@@ -24,7 +24,7 @@
 
 <!-- And since items-center means "align children vertically within body", it messed up vertical alignment (because the body had no full height) -->
 <body class="max-h-screen overflow-auto font-smythe bg-violet-200">
-    <div class="bg-violet-100 max-w-xl mx-auto">
+    <div class="bg-violet-100 max-w-lg mx-auto">
         <div>
             <div class="relative overflow-hidden h-40 w-full">
                 <img class="object-cover [object-position:center_75%] w-full h-full" src="./images/header.jpg">
@@ -36,11 +36,14 @@
                         <p class="text-white text-sm pl-8">The best burgers and pizzas in Town</p>
                     </div>
                 </div>
-            </div>
-            
+            </div>      
         </div>
-        <div id="menu" class="px-6 py-3 pb-5"></div>  
-        <div id="checkout">Checkout</div>
+        
+            <div id="menu" class="px-6 py-3 pb-5">   
+            </div>  
+            <div id="checkout" class="hidden">Checkout</div>
+        
+        
     </div>   
         
     

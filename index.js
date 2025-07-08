@@ -23,7 +23,7 @@ function displayMenu(){
         <div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <p class="text-[5rem]">${menuItem.emoji}</p>
+                    <p class="text-[3rem]">${menuItem.emoji}</p>
                     <div>
                         <h1 class="text-xl">${menuItem.name}</h1>
                         <p class="text-gray-600">${ingredients}</p>
