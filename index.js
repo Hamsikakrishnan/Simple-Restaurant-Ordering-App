@@ -1,7 +1,6 @@
 import { menuArray } from './data.js'
 import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
 
-
 const menu = document.getElementById("menu")
 const checkout = document.getElementById("checkout")
 const completeOrderBtn = document.getElementById("complete-order")
@@ -52,7 +51,6 @@ completeOrderBtn.addEventListener("click", function(){
     }
 })
 
-
 menu.addEventListener("click", function(e){
     if(e.target.id){
         if(!cartItems.includes(e.target.id)){
@@ -61,6 +59,7 @@ menu.addEventListener("click", function(e){
         }
     }
 })
+
 function displayMenu(){
     let html = ''
     menuArray.forEach((menuItem) =>{
@@ -87,13 +86,11 @@ function displayMenu(){
             <hr>
         </div>
         `
-        
-        
     })
     return html
 }
+
 function displayCart(){
-    // console.log(cartItems)
     let cartMaterials = menuArray.filter((item) =>{
         return cartItems.includes(item.id)
     })
