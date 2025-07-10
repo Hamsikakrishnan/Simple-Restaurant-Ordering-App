@@ -2,6 +2,14 @@ import { menuArray } from './data.js'
 
 const menu = document.getElementById("menu")
 const checkout = document.getElementById("checkout")
+const completeOrderBtn = document.getElementById("complete-order")
+
+completeOrderBtn.addEventListener("click", function(){
+    if(cartItems.length != 0){
+        console.log("Order Complete")
+    }
+})
+
 let cartItems = []
 menu.addEventListener("click", function(e){
     if(e.target.id){
@@ -69,11 +77,11 @@ function displayCart(){
           <h1>Total Amount</h1>
           <p>${totalPrice}</p>
        </div>
-       <div class="flex items-center justify-center">
-          <button id = "complete-order" class="border rounded bg-violet-500 text-xl text-white px-6 py-1 text-center">Complete the Order</button>
-       </div>`
+       `
     return html
 }
+
+
 function render(){
     menu.innerHTML = displayMenu()
 }
