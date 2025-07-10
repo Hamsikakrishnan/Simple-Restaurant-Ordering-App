@@ -23,11 +23,11 @@ function displayMenu(){
         <div>
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <p class="text-[3rem]">${menuItem.emoji}</p>
+                    <p class="text-[2.5rem]">${menuItem.emoji}</p>
                     <div>
-                        <h1 class="text-xl">${menuItem.name}</h1>
+                        <h1 class="text-lg leading-none">${menuItem.name}</h1>
                         <p class="text-gray-600">${ingredients}</p>
-                        <p class="text-lg">$${menuItem.price}</p>
+                        <p class="text-sm">$${menuItem.price}</p>
                     </div>
                 </div>
                 
@@ -43,20 +43,35 @@ function displayMenu(){
     return html
 }
 function displayCart(){
-    console.log(cartItems)
+    // console.log(cartItems)
     let cartMaterials = menuArray.filter((item) =>{
         return cartItems.includes(item.id)
     })
     console.log(cartMaterials)
     let html = ``
+    let totalPrice = 0
+    html += '<h1 class="text-center leading-none">Your Order</h1>'
     cartMaterials.forEach((item) =>{
         html +=  `
-           <div>
-              <h1>${item.name}</h1>
+           <div class="flex justify-between mx-7 my-5 leading-none">
+              <div class="flex">
+                <p>${item.emoji}&nbsp&nbsp</p>
+                <h1>${item.name}</h1>
+              </div>
               <p>${item.price}</p>
            </div>
         `
+        totalPrice += item.price
     })
+    html += `
+       <hr class="border-t border-gray-400 my-2 mx-6 leading-none">
+       <div class="flex justify-between mx-7 my-1">
+          <h1>Total Amount</h1>
+          <p>${totalPrice}</p>
+       </div>
+       <div class="flex items-center justify-center">
+          <button id = "complete-order" class="border rounded bg-violet-500 text-xl text-white px-6 py-1 text-center">Complete the Order</button>
+       </div>`
     return html
 }
 function render(){
