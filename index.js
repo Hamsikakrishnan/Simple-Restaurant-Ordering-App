@@ -22,6 +22,18 @@ document.addEventListener("click", function(e){
            </div>
         `
     }
+    else if(e.target.dataset.remove){
+        console.log(e.target.dataset.remove)
+        let selectedItemId = Number(e.target.dataset.remove)
+        cartItems = cartItems.filter((id)=>{
+            return id != selectedItemId
+        })
+        renderItems()
+        if(cartItems.length == 0){
+            checkout.classList.add("hidden")
+            completeOrderBtn.classList.add("hidden")
+        }
+    }
 })
 
 completeOrderBtn.addEventListener("click", function(){
@@ -94,10 +106,11 @@ function displayCart(){
     html += '<h1 class="text-center leading-none">Your Order</h1>'
     cartMaterials.forEach((item) =>{
         html +=  `
-           <div class="flex justify-between mx-7 my-5 leading-none">
-              <div class="flex">
+           <div class="flex items-center justify-between mx-7 my-5 leading-none">
+              <div class="flex items-center">
                 <p>${item.emoji}&nbsp&nbsp</p>
-                <h1>${item.name}</h1>
+                <h1 class="text-lg">${item.name}</h1>
+                <button data-remove="${item.id}" class="text-red-500 text-xs pl-2">remove</button>
               </div>
               <p>$${item.price}</p>
            </div>
@@ -119,6 +132,10 @@ function render(){
     menu.innerHTML = displayMenu()
 }
 function renderItems(){
+    if(cartItems.length != 0){
+        checkout.classList.remove("hidden")
+        completeOrderBtn.classList.remove("hidden")
+    }
     checkout.innerHTML = displayCart()
 }
 render()
