@@ -3,10 +3,21 @@ import { menuArray } from './data.js'
 const menu = document.getElementById("menu")
 const checkout = document.getElementById("checkout")
 const completeOrderBtn = document.getElementById("complete-order")
-
+const orderConfirm = document.getElementById("order-modal")
+document.addEventListener("click", function(e){
+    if(e.target.id === "close-modal"){
+        orderConfirm.classList.add("hidden")
+    }
+})
 completeOrderBtn.addEventListener("click", function(){
     if(cartItems.length != 0){
-        console.log("Order Complete")
+        orderConfirm.classList.remove("hidden")
+        orderConfirm.innerHTML = `
+            <div class="bg-white p-6 rounded text-center shadow-xl w-3/4">
+                <h2 class="text-2xl font-bold mb-2 text-violet-700">Thank You!</h2>
+                <p class="text-gray-700 mb-4">Your order has been placed.</p>
+                <button id="close-modal" class="bg-violet-500 text-white px-4 py-1 rounded">Close</button>
+            </div>`
     }
 })
 
@@ -58,6 +69,9 @@ function displayCart(){
     console.log(cartMaterials)
     let html = ``
     let totalPrice = 0
+    if(cartMaterials.length != 0){
+        completeOrderBtn.classList.remove("hidden")
+    }
     html += '<h1 class="text-center leading-none">Your Order</h1>'
     cartMaterials.forEach((item) =>{
         html +=  `
@@ -66,7 +80,7 @@ function displayCart(){
                 <p>${item.emoji}&nbsp&nbsp</p>
                 <h1>${item.name}</h1>
               </div>
-              <p>${item.price}</p>
+              <p>$${item.price}</p>
            </div>
         `
         totalPrice += item.price
@@ -75,7 +89,7 @@ function displayCart(){
        <hr class="border-t border-gray-400 my-2 mx-6 leading-none">
        <div class="flex justify-between mx-7 my-1">
           <h1>Total Amount</h1>
-          <p>${totalPrice}</p>
+          <p>$${totalPrice}</p>
        </div>
        `
     return html
