@@ -1,27 +1,46 @@
 import { menuArray } from './data.js'
+import { v4 as uuidv4 } from 'https://jspm.dev/uuid';
+
 
 const menu = document.getElementById("menu")
 const checkout = document.getElementById("checkout")
 const completeOrderBtn = document.getElementById("complete-order")
 const orderConfirm = document.getElementById("order-modal")
+const orderSpace = document.getElementById("order-space")
+let cartItems = []
+
 document.addEventListener("click", function(e){
     if(e.target.id === "close-modal"){
         orderConfirm.classList.add("hidden")
     }
+    else if(e.target.id === "payment-modal"){
+        orderConfirm.classList.add("hidden")
+        orderSpace.innerHTML = `
+           <div class="text-green-600 m-7 pb-12">
+              <h1>Your Order has been Placed. Thank you for Choosing us!</h1>
+              <p>Your order id: ${uuidv4()}</p>
+           </div>
+        `
+    }
 })
+
 completeOrderBtn.addEventListener("click", function(){
+    let html = displayCart()
     if(cartItems.length != 0){
         orderConfirm.classList.remove("hidden")
         orderConfirm.innerHTML = `
-            <div class="bg-white p-6 rounded text-center shadow-xl w-3/4">
-                <h2 class="text-2xl font-bold mb-2 text-violet-700">Thank You!</h2>
-                <p class="text-gray-700 mb-4">Your order has been placed.</p>
-                <button id="close-modal" class="bg-violet-500 text-white px-4 py-1 rounded">Close</button>
+            <div class="bg-white p-6 rounded text-center shadow-xl w-3/4"> 
+                <h2 class="text-2xl font-bold mb-2 text-violet-700">${html}</h2>
+                <div class="flex justify-between px-5 pt-3">
+                  <button id="close-modal" class="bg-violet-400 text-white px-4 py-1 rounded">Back</button>
+                  <button id="payment-modal" class="bg-violet-600 text-white px-4 py-1 rounded">Proceed to Payment</button>
+                </div>
+                
             </div>`
     }
 })
 
-let cartItems = []
+
 menu.addEventListener("click", function(e){
     if(e.target.id){
         if(!cartItems.includes(e.target.id)){
